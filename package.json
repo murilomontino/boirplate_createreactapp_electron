@@ -1,0 +1,73 @@
+{
+  "name": "boirplate_createreactapp_electron",
+  "version": "0.1.0",
+  "author": "",
+  "description": "",
+  "build": {
+    "appId": "com.name_app.app",
+    "productName": "Product Name",
+    "copyright": "Copyright © 2019 Banhistas Porcos Selvagens",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "src/**/mainProcess/**/*"
+    ],
+    "directories": {
+      "buildResources": "src/assets/icons"
+    }
+    
+  },
+  "private": true,
+  "homepage": "./",
+  "main": "./public/electron.js",
+  "dependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.3",
+    "source-map-support": "^0.5.19"
+  },
+  "scripts": {
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "prod": "cross-env NODE_ENV=production electron ./build/electron",
+    "test": "rescripts test",
+    "eject": "react-scripts eject",
+    "fix": "./node_modules/.bin/eslint .  --fix",
+    "dev:renderer": "cross-env BROWSER=none NODE_ENV=development yarn start",
+    "dev:main": "wait-on http://localhost:3000 && yarn nodemon",
+    "dev": "concurrently \"yarn dev:renderer\" \" yarn dev:main  .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-build": "cross-env NODE_ENV=production yarn build",
+    "electron-build": "cross-env NODE_ENV=production yarn electron-builder build -w"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.14",
+    "@rescripts/rescript-env": "^0.0.12",
+    "concurrently": "5.3.0",
+    "cross-env": "^7.0.2",
+    "electron": "10.1.0",
+    "electron-builder": "^22.8.1",
+    "electron-devtools-installer": "^3.1.1",
+    "nodemon": "^2.0.4",
+    "typescript": "^4.0.3",
+    "wait-on": "^5.2.0"
+  }
+}
